@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IPM Colleges Compared</title>
+<meta name="description" content="Compare every IIM integrated programme (IPM / BMS) for IPMAT Indore, IPMAT Rohtak and JIPMAT: seats, fees, placements and the exam each accepts.">
+<link rel="canonical" href="https://allaboutipmat.com/colleges.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE a prospectus comparison desk: calm, exact, data-first
+   IDEA an admissions ready-reckoner — one table a student scans to see where their score reaches
+   PICTURE the exam-wise comparison table as the page's centre
+   COLOUR night-ink #0b0f1d ground, OMR blue #7aa0ff dominant, deep panels, yellow for the headline figure
+   TYPE Archivo 800 display + Inter text
+   LAYOUT laptop: title band, then exam filter, then the big table; phone: stacked cards */
+:root{color-scheme:dark;
+--bg:#0b0f1d;--ink:#eef1fa;--mute:#a3adc4;
+--blue:#7aa0ff;--blued:#a9c1ff;--pink:#121831;--line:#28335a;--card:#151c35;
+--hi:#ffe14d;--ok:#5fd39a}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth}
+body{margin:0;background-color:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:clip;
+background-image:radial-gradient(rgba(170,190,255,.10) 1px,transparent 1.4px);background-size:26px 26px;background-attachment:fixed}
+h1,h2,h3{font-family:Archivo,Inter,sans-serif;letter-spacing:-.02em;line-height:1.08;margin:0;text-wrap:balance}
+h1{font-size:clamp(32px,4.6vw,52px);font-weight:800}
+h2{font-size:clamp(24px,3vw,34px);font-weight:800}
+p{margin:0}
+a{color:inherit}
+.wrap{max-width:1240px;margin:0 auto}
+.band{padding-block:clamp(32px,4.5vw,64px);padding-inline:max(5vw,16px)}
+
+nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding:12px max(5vw,16px)}
+.logo{display:flex;align-items:center;gap:10px;font:800 20px Archivo,sans-serif;text-decoration:none;letter-spacing:-.02em}
+.logo svg{width:30px;height:30px}
+.logo .g{background:linear-gradient(90deg,#7aa0ff,#5ee0e6);-webkit-background-clip:text;background-clip:text;color:transparent}
+.links{display:flex;gap:4px 18px;flex-wrap:wrap;margin-left:auto;font-weight:500}
+.links a{text-decoration:none;padding:8px 2px;color:var(--mute)}
+.links a:hover,.links a.on{color:var(--blue)}
+@media(max-width:760px){.links{width:100%;margin-left:0;overflow-x:auto;flex-wrap:nowrap}.links a{flex:none}}
+
+.hero{background:var(--pink);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;z-index:0;width:460px;height:460px;left:-120px;top:-160px;border-radius:50%;filter:blur(90px);background:rgba(80,120,255,.3)}
+.hero .wrap{position:relative;z-index:1}
+.hero p.lead{font-size:18px;color:var(--mute);margin:18px 0 0;max-width:46em}
+.stats{display:flex;gap:10px 30px;flex-wrap:wrap;margin-top:26px}
+.stats b{display:block;font:800 30px Archivo,sans-serif;color:var(--ink)}
+.stats span{font-size:14px;color:var(--mute)}
+
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}
+.filters button{min-height:44px;padding:0 18px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--mute);font:600 15px Inter,sans-serif;cursor:pointer}
+.filters button.on{border-color:var(--blue);color:var(--blue);background:color-mix(in srgb,var(--blue) 12%,var(--card))}
+.filters button:focus-visible{outline:3px solid var(--hi);outline-offset:3px}
+
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px}
+table{border-collapse:collapse;width:100%;font-size:15px}
+thead th{position:sticky;top:0;background:var(--pink);text-align:left;font:700 13px Archivo,sans-serif;letter-spacing:.01em;color:var(--blued);padding:14px 14px;white-space:nowrap;border-bottom:1px solid var(--line)}
+tbody td{padding:13px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover{background:color-mix(in srgb,var(--blue) 7%,transparent)}
+.col{font-weight:600}
+.col small{display:block;color:var(--mute);font-weight:400;font-size:13px}
+.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.exam-tag{display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;white-space:nowrap}
+.e-ind{background:color-mix(in srgb,#7aa0ff 20%,var(--card));color:var(--blued)}
+.e-roh{background:color-mix(in srgb,#5fd39a 20%,var(--card));color:#8ee6b7}
+.e-jip{background:color-mix(in srgb,#ffb44d 22%,var(--card));color:#ffcf8a}
+.e-own{background:color-mix(in srgb,#c89bff 20%,var(--card));color:#d4b3ff}
+.hl{color:var(--hi);font-weight:600}
+
+@media(max-width:720px){
+table{font-size:14px}
+thead{display:none}
+tbody tr{display:grid;grid-template-columns:1fr auto;gap:2px 10px;padding:14px 14px;border-bottom:1px solid var(--line)}
+tbody td{padding:2px 0;border:0}
+tbody td.col{grid-column:1/-1;font-size:17px;margin-bottom:4px}
+tbody td[data-l]::before{content:attr(data-l);color:var(--mute);font-size:12px;display:block}
+tbody td.num{text-align:left}
+}
+
+.note{font-size:13px;color:var(--mute);margin-top:14px;line-height:1.5}
+.key{display:flex;gap:8px 18px;flex-wrap:wrap;margin:16px 0 22px;font-size:14px;color:var(--mute)}
+.key span{display:inline-flex;align-items:center;gap:7px}
+.dot{width:12px;height:12px;border-radius:3px;display:inline-block}
+
+footer{border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px 40px;flex-wrap:wrap;font-size:14px;color:var(--mute);padding-block:28px}
+footer a{text-decoration:none}
+footer a:hover{color:var(--blue)}
+.fl{display:flex;gap:8px 20px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="index.html" aria-label="All About IPMAT home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="#7aa0ff" stroke-width="3"/><circle cx="16" cy="16" r="7" fill="#7aa0ff"/></svg>
+      <span>All About <span class="g">IPMAT</span></span>
+    </a>
+    <div class="links">
+      <a href="index.html#exams">Exams</a>
+      <a href="colleges.html" class="on">Colleges</a>
+      <a href="index.html#resources">Resources</a>
+      <a href="index.html#topics">Topics</a>
+      <a href="index.html#qotd">Daily question</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero band">
+  <div class="wrap">
+    <h1>Every IPM college, side by side</h1>
+    <p class="lead">All the IIM integrated and BMS programmes you can target with IPMAT Indore, IPMAT Rohtak or JIPMAT — seats, fees, placements and which exam opens which door. Figures from 2024–25 college brochures.</p>
+    <div class="stats">
+      <div><b>9</b><span>IIM integrated programmes</span></div>
+      <div><b>3</b><span>entrance exams</span></div>
+      <div><b>~900</b><span>total IPM seats</span></div>
+    </div>
+  </div>
+</header>
+
+<section class="band">
+  <div class="wrap">
+    <h2>Compare the programmes</h2>
+    <div class="key">
+      <span><span class="dot" style="background:#7aa0ff"></span>IPMAT Indore</span>
+      <span><span class="dot" style="background:#5fd39a"></span>IPMAT Rohtak</span>
+      <span><span class="dot" style="background:#ffb44d"></span>JIPMAT</span>
+      <span><span class="dot" style="background:#c89bff"></span>Own test</span>
+    </div>
+    <div class="filters" id="filters">
+      <button class="on" data-f="all" type="button">All</button>
+      <button data-f="ind" type="button">IPMAT Indore</button>
+      <button data-f="roh" type="button">IPMAT Rohtak</button>
+      <button data-f="jip" type="button">JIPMAT</button>
+      <button data-f="own" type="button">Own test</button>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>College &amp; programme</th>
+            <th>Exam accepted</th>
+            <th class="num">Seats</th>
+            <th class="num">Fees / year</th>
+            <th class="num">Avg package</th>
+            <th class="num">Highest</th>
+            <th class="num">Since</th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+    <p class="note" id="note"></p>
+  </div>
+</section>
+
+<footer class="band">
+  <div class="wrap">
+    <div>
+      <a class="logo" href="index.html">All About <span class="g">IPMAT</span></a>
+      <p style="margin-top:8px">Free, independent IPMAT preparation.</p>
+    </div>
+    <div class="fl">
+      <a href="index.html#exams">Exams</a>
+      <a href="colleges.html">Colleges</a>
+      <a href="index.html#topics">Topics</a>
+      <a href="index.html#qotd">Daily question</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+{
+const E={ind:["IPMAT Indore","e-ind"],roh:["IPMAT Rohtak","e-roh"],jip:["JIPMAT","e-jip"],own:["Own test","e-own"]};
+const data=[
+ {c:"IIM Indore",p:"BA (FoM) + MBA · 5 yr",e:"ind",seats:"156",fee:"₹6.50 L",avg:"₹29.57 L",hi:"₹70 L",yr:"2011"},
+ {c:"IIM Rohtak",p:"BBA + MBA · 5 yr",e:"roh",seats:"198",fee:"₹6.22 L",avg:"₹18.73 L",hi:"₹36 L",yr:"2019"},
+ {c:"IIM Ranchi",p:"BBA + MBA · 5 yr",e:"ind",seats:"60",fee:"₹6.15 L",avg:"₹19.29 L",hi:"₹50.39 L",yr:"2021"},
+ {c:"IIM Jammu",p:"BBA + MBA · 5 yr",e:"jip",seats:"140",fee:"₹6.15 L",avg:"₹15.48 L",hi:"₹31.75 L",yr:"2021"},
+ {c:"IIM Bodhgaya",p:"BBA + MBA · 5 yr",e:"jip",seats:"120",fee:"₹4.00 L",avg:"₹13.30 L",hi:"₹22 L",yr:"2021"},
+ {c:"IIM Shillong",p:"BBA + MBA · 5 yr †",e:"ind",seats:"60",fee:"₹3.81 L",avg:"₹26.44 L",hi:"₹71.50 L",yr:"2025"},
+ {c:"IIM Amritsar",p:"BSQFE + MBA · 5 yr †",e:"ind",seats:"60",fee:"₹6.25 L",avg:"₹19.73 L*",hi:"₹58.52 L",yr:"2025"},
+ {c:"IIM Sirmaur",p:"BMS · 4 yr",e:"ind",seats:"120",fee:"₹6.00 L",avg:"—",hi:"—",yr:"2024"},
+ {c:"IIM Kozhikode",p:"BMS · 4 yr",e:"own",seats:"120",fee:"₹7.00 L",avg:"—",hi:"—",yr:"2025"}
+];
+const esc=s=>String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+const rows=document.getElementById('rows');
+function render(f){
+ rows.innerHTML=data.filter(d=>f==='all'||d.e===f).map(d=>{
+   const[label,cls]=E[d.e];
+   return `<tr><td class="col">${esc(d.c)}<small>${esc(d.p)}</small></td>`+
+   `<td data-l="Exam"><span class="exam-tag ${cls}">${esc(label)}</span></td>`+
+   `<td class="num" data-l="Seats">${esc(d.seats)}</td>`+
+   `<td class="num" data-l="Fees/yr">${esc(d.fee)}</td>`+
+   `<td class="num" data-l="Avg package">${esc(d.avg)}</td>`+
+   `<td class="num" data-l="Highest">${esc(d.hi)}</td>`+
+   `<td class="num" data-l="Since">${esc(d.yr)}</td></tr>`;
+ }).join('');
+}
+render('all');
+document.getElementById('filters').addEventListener('click',e=>{
+ const b=e.target.closest('button');if(!b)return;
+ [...document.querySelectorAll('#filters button')].forEach(x=>x.classList.toggle('on',x===b));
+ render(b.dataset.f);
+});
+document.getElementById('note').innerHTML="† Mathematics (or Applied Maths / Statistics) mandatory at Class 12 for Shillong and Amritsar. "+
+ "*Amritsar figure is the top-quartile average; its highest international package was ₹58.52 L. "+
+ "Several IPMAT Indore scores are also accepted by private universities such as NALSAR and NIRMA. "+
+ "Figures are indicative, drawn from 2024–25 college brochures, and change each cycle — always confirm on the official admission page.";
+}
+</script>
+</body>
+</html>
